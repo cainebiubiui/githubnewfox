@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>来自狐狸的问候</title>
+
+    <link rel="stylesheet" href="UI.css">
+    <link rel="stylesheet" href="css/segment.css">
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei";
+        }
+        
+        .Btn{
+            border: solid 1px #003399;
+            color: #003399;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .header{
+            position: fixed;
+            border-bottom: solid 1px #a9a9a9;
+            text-align: center;
+            line-height: 48px;
+            background-color: white;
+
+            width: 100%;
+            height: 48px;
+            color: #003399;
+        }
+
+        .titleBox{
+            width: 100%;
+            height: 60px;
+            padding-top: 48px;
+
+            line-height: 60px;
+            border-bottom: solid 1px #a9a9a9;
+        }
+
+        .titleBox h1{
+            margin-left: 12px;
+        }
+
+        .mainBox{
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+
+        }
+
+        img{
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .orderBtn{
+            margin: 0 auto;
+            
+            width: 100px;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 5px;
+
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .serverBox{
+            width: 100%;
+            border-top: solid 1px #a9a9a9;
+            border-bottom: solid 1px #a9a9a9;
+
+            padding: 6px 0px 6px 0px;
+            margin: 12px 0px 12px 0px;
+        }
+
+        .serverBox h3,
+        .serverBox p{
+            margin-left: 12px;
+        }
+
+        .orderBox{
+
+            width: 454px;
+            padding: 0px 12px 0px 12px;
+            height: auto;
+            margin: 0 auto;
+
+            -webkit-transition: all 0.6s;
+            -moz-transition: all 0.6s;
+            -ms-transition: all 0.6s;
+            -o-transition: all 0.6s;
+            transition: all 0.6s;
+
+            overflow: hidden;
+        }
+
+        .orderBoxShow{
+            height: 360px;
+        }
+
+        .orderBox input:first-child{
+        }
+
+        input{
+            width: 454px;
+            margin: 12px 0px 0px 0px;
+            border: solid 1px #a9a9a9;
+            border-radius: 4px;
+            height: 24px;
+            outline: none;
+        }
+
+        select{
+            width: 454px;
+            height: 24px;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+            background: transparent;
+            border: solid #a9a9a9 1px;
+
+            -ms-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+            -o-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .sendOrderBtn{
+            margin: 10px auto;
+            width: 80px;
+            height: 24px;
+            line-height: 24px;
+            border-radius: 4px;
+
+            -webkit-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            -ms-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        .sendOrderBtnAnimation{
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border-top: solid white 1px;
+
+            -webkit-animation: loading linear 0.8s infinite;
+            -moz-animation: loading linear 0.8s infinite;
+            -ms-animation: loading linear 0.8s infinite;
+            -o-animation: loading linear 0.8s infinite;
+            animation: loading linear 0.8s infinite;
+        }
+
+        @-webkit-keyframes loading {
+            0% { -webkit-transform: rotate(0deg) }
+            100% { -webkit-transform: rotate(360deg) }
+        }
+
+        @-moz-keyframes loading {
+            0% { -webkit-transform: rotate(0deg) }
+            100% { -webkit-transform: rotate(360deg) }
+        }
+
+        @-ms-keyframes loading {
+            0% { -webkit-transform: rotate(0deg) }
+            100% { -webkit-transform: rotate(360deg) }
+        }
+
+        @-o-keyframes loading {
+            0% { -webkit-transform: rotate(0deg) }
+            100% { -webkit-transform: rotate(360deg) }
+        }
+
+        @keyframes loading {
+            0% { -webkit-transform: rotate(0deg) }
+            100% { -webkit-transform: rotate(360deg) }
+        }
+
+        .settingBox{
+            position: fixed;
+            top: 200px;
+            left: 200px;
+            background-color: red;
+            width: 30%;
+            height: 60%;
+            max-width: 480px;
+            max-height: 500px;
+            border-radius: 4px;
+
+            z-index: 2000;
+
+            -webkit-transition: all 0.6s;
+            -moz-transition: all 0.6s;
+            -ms-transition: all 0.6s;
+            -o-transition: all 0.6s;
+            transition: all 0.6s;
+        }
+
+        .touchableLock{
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 7000;
+            background-color: #ffffff;
+            opacity: 0.9;
+            display: none;
+
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">来自狐狸的问候</div>
+    <div class="titleBox"><h1>竞技键盘 ¥ 28</h1></div>
+    <div class="mainBox"><img src="0001.jpg"></div>
+    <div class="orderBtn Btn">现在订购</div>
+
+    <div class="orderBox">
+        <form method="post" action="action/order.php" id="orderForm">
+        <select name="dorm" id="dorm">
+            <option value="-1">选择你的宿舍</option>
+        </select>
+        <input type="text" placeholder="宿舍号码" id="dormNumber" name="dormNumber">
+        <input type="text" placeholder="联系电话" id="phonenumber" name="phonenumber">
+        <!--<select name="number" id="number">-->
+            <!--<option value="1">数量:1</option>-->
+        <!--</select>-->
+
+            <p style="margin-top: 12px">选择需要的服务：</p>
+        <div class="ios-segmented-control">
+            <ul>
+                <li class="" style="border: 1px #a9a9a9 solid"><label></label>除尘</li>
+                <li class="" style="border: 1px #a9a9a9 solid"><label></label>重装系统</li>
+                <li class="light" style="margin-left: 0px"><label></label>维修耳机或鼠标</li>
+                <!--<li class="light"><label>规格:</label>USB有线</li>-->
+            </ul>
+        </div>
+
+            <select name="dorm" id="time">
+                <option value="-1">预约时间</option>
+            </select>
+
+        <!--<input type="checkbox" id="priceAdd" style="width: auto">-->
+        <!--<label for="priceAdd">添加一元，即刻送货</label>-->
+        <p class="songhuoCondition" style="display: none; font-size: 0.6em; color: red;">即刻送货即订单正式接收起即刻为您送货，且仅在8:00～21:00有效。</p>
+
+        <!--<h3 style="text-align: right">总价:<label id="totalPrice">28</label>元</h3>-->
+        <div class="sendOrderBtn Btn" data-code="480280">提交订单</div>
+        </form>
+    </div>
+
+    <div class="serverBox">
+        <h3>免费送货，货到付款</h3>
+        <p>全部订单均享受免费送货服务，且30内出现任何的质量问题我们将为你免费更换。</p>
+    </div>
+
+    <div class="ios-alert-view">
+        <h4 class="alert-view-title"></h4>
+
+        <p class="alert-view-content"></p>
+
+        <ul>
+            <li class="alert-confirm btn">确定</li>
+            <li class="alert-cancel btn">取消</li>
+        </ul>
+
+    </div>
+
+    <div class="touchableLock"></div>
+
+    <!--<div class="settingBox"></div>-->
+</body>
+<script src="js/pv.js"></script>
+<script src="js/fox.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/json_parse.js"></script>
+<script src="js/ios-segmented-control.js"></script>
+<script>
+var addressJSON = {
+    "location":[
+        '竹一',
+        '竹二',
+        '竹三',
+        '竹四',
+        '松一',
+        '松二',
+        '松三',
+        '梅一',
+        '梅二',
+        '梅三',
+        '梅四',
+        '榴一',
+        '榴二'
+    ],
+    "name":[
+        'zhuyi',
+        'zhuer',
+        'zhusan',
+        'zhusi',
+        'songyi',
+        'songer',
+        'songsna',
+        'meiyi',
+        'meier',
+        'meisan',
+        'meisi',
+        'liuyi',
+        'liuer'
+    ]
+}
+
+var addressSelectInit = function(){
+    for(var locationName in addressJSON.location){
+        var val = addressJSON.name[locationName];
+
+        var name = addressJSON.location[locationName];
+        var addSelect = '<option value="'+val+'">'+name+'</option>';
+        $('#dorm').innerHTML += addSelect;
+    }
+}
+
+addressSelectInit();
+
+
+(function(){
+    var orderBtn = $('.orderBtn'),
+            priceAdd = $('#priceAdd');
+
+    var ftoggleOrderBox = function(){
+        var orderBox = $('.orderBox');
+        classie.toggle(orderBox, 'orderBoxShow');
+    }
+
+
+    var priceAddClick = function(){
+        var totalPrice = $('#totalPrice');
+        var condition = $('.songhuoCondition');
+        if(this.checked){
+            var oldPrice = totalPrice.innerText;
+            var newPrice = parseInt(oldPrice)+1;
+            totalPrice.innerText = newPrice;
+            condition.style.display = 'block';
+        }else if(!this.checked){
+            var oldPrice = totalPrice.innerText;
+            var newPrice = parseInt(oldPrice)-1;
+            totalPrice.innerText = newPrice;
+            condition.style.display = 'none';
+        }
+    }
+
+    Fox.add_listener(orderBtn, 'click', ftoggleOrderBox);
+    priceAdd.addEventListener('click', priceAddClick);
+
+
+    var lockTouch = function(){
+        var touchableLock = $('.touchableLock');
+        touchableLock.style.display = 'block';
+    }
+
+    var unlockTouch = function(){
+        var touchableLock = $('.touchableLock');
+        touchableLock.style.display = 'none';
+    }
+
+    var init = function(){
+        var sendOrderBtn = $('.sendOrderBtn');
+
+        var falertCancel = function(){
+            falertHide();
+        }
+
+        var falertComfirm = function(){
+            falertHide();
+        }
+
+        var finitAlertView=function(title, content, fcancel, fconfirm){
+            $('.alert-view-title').innerHTML=title;
+            $('.alert-view-content').innerHTML=content;
+            Fox.add_listener($('.alert-confirm'), 'click', fconfirm);
+            Fox.add_listener($('.alert-cancel'), 'click', fcancel);
+        }
+
+        var falertShow=function(){
+            classie.add($('.ios-alert-view'), 'alert-view-show')
+            lockTouch();
+        }
+
+        var falertHide=function(){
+            classie.remove($('.ios-alert-view'), 'alert-view-show')
+            unlockTouch();
+        }
+
+        var fsendOrderLoading = function(){
+            sendOrderBtn.innerText = null;
+            classie.add(sendOrderBtn, 'sendOrderBtnAnimation');
+        }
+
+        var fsendOrderStopLoading = function(){
+            classie.remove(sendOrderBtn, 'sendOrderBtnAnimation');
+            sendOrderBtn.innerText = '提交订单';
+        }
+
+        var freloadPage = function(){
+            setTimeout(function(){
+                window.location.reload();
+            }, 500);
+        }
+
+
+        var orderSubmit = function(){
+
+            var dorm = $('#dorm'),
+                    dormNumber = $('#dormNumber'),
+                    phonenumber = $('#phonenumber'),
+                    isRightNumber = /^\d{0,4}$/,
+                    isRightPhonenumber = /^1[3|4|5|7|8|9][0-9]\d{4,8}$/,
+                    colorVal,
+                    sizeVal,
+                    isChecked,
+                    productCode = $('.sendOrderBtn').getAttribute('data-code'),
+                    totalPrice = $('#totalPrice').innerText;
+
+            io('Email:songguagua@yahoo.com');
+            if(dorm.value == -1){
+                finitAlertView('ohps!', '请完整你的地址信息', falertHide, falertHide);
+                falertShow();
+                return false;
+            }
+
+            if(!isRightNumber.test(dormNumber.value)){
+                finitAlertView('ohps!', '请输入正确的宿舍号码', falertHide, falertHide);
+                falertShow();
+                return false;
+            }
+
+            if(!isRightPhonenumber.test(phonenumber.value)){
+                finitAlertView('ohps!', '请输入正确的手机号码', falertHide, falertHide);
+                falertShow();
+                return false;
+            }
+
+
+            if($('#priceAdd').checked){
+                isChecked = 1;
+            }else{
+                isChecked = 0;
+            }
+
+            var colorAndSizeVal = {
+                "isChecked": isChecked,
+                "productCode": productCode,
+                "totalPrice": totalPrice
+            }
+
+            ajax.formPost('#orderForm', colorAndSizeVal, function(res){
+                fsendOrderLoading();
+
+                var json;
+                try{
+                    json = JSON.parse(res);
+                }catch (e){
+                    alert(e)
+                    return false;
+                }
+
+                if(json.fine == 1){
+                    Fox.setcookie('orderID', json.orderID);
+                    setTimeout(function(){
+                        finitAlertView('您的订单已提交:)', '这是订单号码:'+json.orderID, freloadPage, freloadPage);
+                        falertShow();
+                    }, 2000);
+                }else if(json.fine == -1){
+                    finitAlertView('ohps!', '好像发生了未知错误:(', freloadPage, freloadPage);
+                    falertShow();
+                }else if(json.fine == 0){
+                    finitAlertView('ohps!', '抱歉，东西好像已经卖光了...', freloadPage, freloadPage);
+                    falertShow();
+                }
+
+            })
+
+        }
+
+
+        Fox.add_listener(sendOrderBtn, 'click', orderSubmit);
+    }
+
+    init();
+
+})()
+
+</script>
+</html>
